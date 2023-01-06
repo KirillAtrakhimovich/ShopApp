@@ -19,21 +19,21 @@ final class TabBarController: UITabBarController {
             generateVC(
                 viewController: HomeViewController(),
                 title: "Explorer",
-                image: nil
+                image: UIImage(systemName: "globe")
             ),
             generateVC(
                 viewController: CartViewController(),
-                title: "",
+                title: "Cart",
                 image: UIImage(systemName: "cart")
             ),
             generateVC(
                 viewController: FavoriteViewController(),
-                title: "",
+                title: "Liked",
                 image: UIImage(systemName: "heart")
             ),
             generateVC(
                 viewController: UserViewController(),
-                title: "",
+                title: "Account",
                 image: UIImage(systemName: "person")
             )
         ]
@@ -46,12 +46,10 @@ final class TabBarController: UITabBarController {
     }
     
     private func setTabBarAppearance() {
-        let positionX: CGFloat = 0
-        let positionY: CGFloat = 14
-        var width = tabBar.bounds.width
-        width = 414
-        var height = tabBar.bounds.height
-        height = 72
+        let positionX: CGFloat = 5
+        let positionY: CGFloat = 7
+        let width = tabBar.bounds.width - positionX * 2
+        let height = tabBar.bounds.height + positionX * 2
         let roundLayer = CAShapeLayer()
         
         let bezierPath = UIBezierPath(
