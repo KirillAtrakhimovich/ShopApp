@@ -12,42 +12,53 @@ class HomeView: UIView {
     
     var locationView: UIView = {
         let locationView = UIView()
+        locationView.backgroundColor = .black
         return locationView
     }()
 
     var selectCategoryView: UIView = {
         let selectCategoryView = UIView()
+        selectCategoryView.backgroundColor = .blue
         return selectCategoryView
     }()
     
     var categoryColletionView: UICollectionView = {
         let categoryColletion = UICollectionView()
+        categoryColletion.backgroundColor = .brown
+        categoryColletion.collectionViewLayout = .init()
         return categoryColletion
     }()
     
     var searchBarView: UIView = {
         let searchBarView = UIView()
+        searchBarView.backgroundColor = .cyan
         return searchBarView
     }()
     
     var hotSalesLablesView: UIView = {
         let searchBarView = UIView()
+        searchBarView.backgroundColor = .darkGray
         return searchBarView
     }()
     
     var hotSalesImageView: UIView = {
         let hotSalesImageView = UIView()
+        hotSalesImageView.backgroundColor = .green
         return hotSalesImageView
     }()
     
     var bestSellerView: UIView = {
         let bestSellerView = UIView()
+        bestSellerView.backgroundColor = .orange
         return bestSellerView
     }()
     
     var mobileColletionView: UICollectionView = {
-        let categoryColletion = UICollectionView()
-        return categoryColletion
+        let mobileColletionView = UICollectionView()
+        mobileColletionView.backgroundColor = .red
+        mobileColletionView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellWithReuseIdentifier: <#T##String#>)
+        mobileColletionView.reg
+        return mobileColletionView
     }()
     
     func setup() {
@@ -58,6 +69,7 @@ class HomeView: UIView {
         setupHotSalesLablesView()
         setupHotSalesImageView()
         setupBestSellerView()
+        setupMobileColletionView()
     }
     
     private func setupLocationView() {
@@ -81,7 +93,7 @@ class HomeView: UIView {
     private func setupCategoryColletionView() {
         self.addSubview(categoryColletionView)
         categoryColletionView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(safeAreaLayoutGuide).offset(24)
+            constraints.top.equalTo(selectCategoryView.snp.bottom).offset(24)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
         }
@@ -90,7 +102,7 @@ class HomeView: UIView {
     private func setupSearchBarView() {
         self.addSubview(searchBarView)
         searchBarView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(safeAreaLayoutGuide)
+            constraints.top.equalTo(categoryColletionView.snp.bottom).offset(35)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
         }
@@ -99,7 +111,7 @@ class HomeView: UIView {
     private func setupHotSalesLablesView() {
         self.addSubview(hotSalesLablesView)
         hotSalesLablesView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(safeAreaLayoutGuide)
+            constraints.top.equalTo(searchBarView.snp.bottom).offset(24)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
         }
@@ -108,7 +120,7 @@ class HomeView: UIView {
     private func setupHotSalesImageView() {
         self.addSubview(hotSalesImageView)
         hotSalesImageView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(safeAreaLayoutGuide)
+            constraints.top.equalTo(hotSalesLablesView.snp.bottom).offset(10)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
         }
@@ -117,7 +129,7 @@ class HomeView: UIView {
     private func setupBestSellerView() {
         self.addSubview(bestSellerView)
         bestSellerView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(safeAreaLayoutGuide)
+            constraints.top.equalTo(hotSalesImageView.snp.bottom).offset(10)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
         }
@@ -126,7 +138,7 @@ class HomeView: UIView {
     private func setupMobileColletionView() {
         self.addSubview(mobileColletionView)
         mobileColletionView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(safeAreaLayoutGuide)
+            constraints.top.equalTo(bestSellerView.snp.bottom).offset(16)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
         }
