@@ -25,7 +25,7 @@ class HomeView: UIView {
     var categoryColletionView: UICollectionView = {
         let categoryColletion = UICollectionView()
         categoryColletion.backgroundColor = .brown
-        categoryColletion.collectionViewLayout = .init()
+        
         return categoryColletion
     }()
     
@@ -53,13 +53,11 @@ class HomeView: UIView {
         return bestSellerView
     }()
     
-    var mobileColletionView: UICollectionView = {
-        let mobileColletionView = UICollectionView()
-        mobileColletionView.backgroundColor = .red
-        mobileColletionView.register(<#T##cellClass: AnyClass?##AnyClass?#>, forCellWithReuseIdentifier: <#T##String#>)
-        mobileColletionView.reg
-        return mobileColletionView
-    }()
+//    var mobileColletionView: UICollectionView = {
+//        let mobileColletionView = UICollectionView()
+//        mobileColletionView.reg
+//        return mobileColletionView
+//    }()
     
     func setup() {
         setupLocationView()
@@ -69,7 +67,7 @@ class HomeView: UIView {
         setupHotSalesLablesView()
         setupHotSalesImageView()
         setupBestSellerView()
-        setupMobileColletionView()
+//        setupMobileColletionView()
     }
     
     private func setupLocationView() {
@@ -132,16 +130,17 @@ class HomeView: UIView {
             constraints.top.equalTo(hotSalesImageView.snp.bottom).offset(10)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
+            constraints.bottom.equalToSuperview()
         }
     }
     
-    private func setupMobileColletionView() {
-        self.addSubview(mobileColletionView)
-        mobileColletionView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(bestSellerView.snp.bottom).offset(16)
-            constraints.leading.equalToSuperview().offset(5)
-            constraints.trailing.equalToSuperview().offset(-5)
-        }
-    }
+//    private func setupMobileColletionView() {
+//        self.addSubview(mobileColletionView)
+//        mobileColletionView.snp.makeConstraints { constraints in
+//            constraints.top.equalTo(bestSellerView.snp.bottom).offset(16)
+//            constraints.leading.equalToSuperview().offset(5)
+//            constraints.trailing.equalToSuperview().offset(-5)
+//        }
+//    }
     
 }
