@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		28695E7B29706F0A002193CE /* Mark-Pro.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28695E7A29706F0A002193CE /* Mark-Pro.ttf */; };
 		28B422DA2954476D00543AF9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B422D92954476D00543AF9 /* AppDelegate.swift */; };
 		28B422DC2954476D00543AF9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B422DB2954476D00543AF9 /* SceneDelegate.swift */; };
 		28B422E32954477000543AF9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B422E22954477000543AF9 /* Assets.xcassets */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		1699F6BDA5A9EB0E62C87216 /* Pods_Shop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		28695E7A29706F0A002193CE /* Mark-Pro.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Mark-Pro.ttf"; sourceTree = "<group>"; };
 		28B422D62954476D00543AF9 /* Shop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		28B422D92954476D00543AF9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		28B422DB2954476D00543AF9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				28B422DB2954476D00543AF9 /* SceneDelegate.swift */,
 				28B422F7295451AD00543AF9 /* TabBarController.swift */,
 				28B422E22954477000543AF9 /* Assets.xcassets */,
+				28695E7A29706F0A002193CE /* Mark-Pro.ttf */,
 				28B422E42954477000543AF9 /* LaunchScreen.storyboard */,
 				28B422E72954477000543AF9 /* Info.plist */,
 			);
@@ -198,6 +201,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28695E7B29706F0A002193CE /* Mark-Pro.ttf in Resources */,
 				28B422E62954477000543AF9 /* LaunchScreen.storyboard in Resources */,
 				28B422E32954477000543AF9 /* Assets.xcassets in Resources */,
 			);
