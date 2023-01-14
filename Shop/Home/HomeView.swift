@@ -52,7 +52,6 @@ class HomeView: UIView {
 
     var selectCategoryView: UIView = {
         let selectCategoryView = UIView()
-        selectCategoryView.backgroundColor = .red
         return selectCategoryView
     }()
     
@@ -67,22 +66,54 @@ class HomeView: UIView {
     var selectCategoryButton: UIButton = {
         let selectCategoryButton = UIButton()
         selectCategoryButton.tintColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
+        selectCategoryButton.setTitleColor(#colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1), for: .normal)
+        selectCategoryButton.titleLabel?.font = UIFont(name: "Mark Pro", size: 15)
         selectCategoryButton.setTitle("view all", for: .normal)
         return selectCategoryButton
     }()
     
     var categoryColletionView: UICollectionView = {
-        let layout = UICollectionViewLayout()
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
         let categoryColletion = UICollectionView(frame: .zero, collectionViewLayout: layout)
         categoryColletion.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        categoryColletion.translatesAutoresizingMaskIntoConstraints = false
         categoryColletion.backgroundColor = .brown
+        
         return categoryColletion
     }()
     
-    var searchBarView: UIView = {
-        let searchBarView = UIView()
-        searchBarView.backgroundColor = .cyan
-        return searchBarView
+    var searchView: UIView = {
+        let searchView = UIView()
+        return searchView
+    }()
+    
+    var searchBar: UISearchBar = {
+        let searchBar = UISearchBar()
+        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchBar.barStyle = .black
+        searchBar.layer.cornerRadius = searchBar.frame.height / 2
+        searchBar.placeholder = "Search"
+        searchBar.searchBarStyle = .minimal
+        searchBar.backgroundColor = .white
+        searchBar.barTintColor = .white
+        if let textField = searchBar.value(forKey: "searchField") as? UITextField,
+            let iconView = textField.leftView as? UIImageView {
+            textField.tintColor = .black
+            textField.textColor = .black
+            iconView.image = iconView.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
+            iconView.tintColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
+        }
+        return searchBar
+    }()
+    
+    var searchButton: UIButton = {
+        let searchButton = UIButton()
+        searchButton.backgroundColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
+        searchButton.setBackgroundImage(UIImage(systemName: "qrcode"), for: .normal)
+        searchButton.layer.cornerRadius = searchButton.frame.height / 2
+        searchButton.layer.masksToBounds = true
+        return searchButton
     }()
     
     var hotSalesLablesView: UIView = {
@@ -113,10 +144,10 @@ class HomeView: UIView {
     
     func setup() {
         
-        selectCategoryLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultLow, for: .horizontal)
-//        dateLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
-        selectCategoryLabel.setContentHuggingPriority(UILayoutPriority.defaultLow, for:.horizontal)
-//        dateLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
+        selectCategoryLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        selectCategoryButton.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        selectCategoryLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
+        selectCategoryButton.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
         
         setupLocationView()
         setupLocationLabel()
@@ -127,8 +158,10 @@ class HomeView: UIView {
         setupSelectCategoryView()
         setupSelectCategoryLabel()
         setupSelectCategoryButton()
-//        setupCategoryColletionView()
-//        setupSearchBarView()
+        setupCategoryColletionView()
+        setupSearchView()
+        setupSearchBar()
+        setupSearchButton()
 //        setupHotSalesLablesView()
 //        setupHotSalesImageView()
 //        setupBestSellerView()
@@ -139,7 +172,7 @@ class HomeView: UIView {
     private func setupLocationView() {
         self.addSubview(locationView)
         locationView.snp.makeConstraints { constraints in
-            constraints.top.equalToSuperview().offset(64)
+            constraints.top.equalToSuperview().offset(59)
             constraints.leading.equalToSuperview()
             constraints.trailing.equalToSuperview()
         }
@@ -188,7 +221,7 @@ class HomeView: UIView {
     private func setupFilterButton() {
         locationView.addSubview(filterButton)
         filterButton.snp.makeConstraints { constraints in
-            constraints.trailing.equalToSuperview().offset(-20)
+            constraints.trailing.equalToSuperview().offset(-35)
             constraints.width.equalTo(11)
             constraints.height.equalTo(13)
             constraints.centerY.equalToSuperview()
@@ -198,10 +231,9 @@ class HomeView: UIView {
     private func setupSelectCategoryView() {
         self.addSubview(selectCategoryView)
         selectCategoryView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(locationView.snp.bottom).offset(18)
+            constraints.top.equalTo(locationView.snp.bottom).offset(8)
             constraints.leading.equalToSuperview()
             constraints.trailing.equalToSuperview()
-            constraints.height.equalTo(40)
         }
     }
     
@@ -210,7 +242,7 @@ class HomeView: UIView {
         selectCategoryLabel.snp.makeConstraints { constraints in
             constraints.top.equalToSuperview().offset(5)
             constraints.bottom.equalToSuperview().offset(-5)
-            constraints.center.equalToSuperview()
+            constraints.centerY.equalToSuperview()
             constraints.leading.equalToSuperview().offset(17)
         }
     }
@@ -220,24 +252,57 @@ class HomeView: UIView {
         selectCategoryButton.snp.makeConstraints { constraints in
             constraints.top.equalToSuperview().offset(5)
             constraints.bottom.equalToSuperview().offset(-5)
-            constraints.center.equalToSuperview()
+            constraints.centerY.equalToSuperview()
             constraints.trailing.equalToSuperview().offset(-33)
         }
     }
     
-    private func setupSearchBarView() {
-        self.addSubview(searchBarView)
-        searchBarView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(categoryColletionView.snp.bottom).offset(35)
-            constraints.leading.equalToSuperview().offset(5)
-            constraints.trailing.equalToSuperview().offset(-5)
+    private func setupCategoryColletionView() {
+        self.addSubview(categoryColletionView)
+        categoryColletionView.snp.makeConstraints { constraints in
+            constraints.top.equalTo(selectCategoryView.snp.bottom).offset(5)
+            constraints.trailing.equalToSuperview()
+            constraints.leading.equalToSuperview()
+            constraints.height.equalTo(142)
         }
     }
+    
+    private func setupSearchView() {
+        self.addSubview(searchView)
+        searchView.snp.makeConstraints { constraints in
+            constraints.top.equalTo(categoryColletionView.snp.bottom)
+            constraints.leading.equalToSuperview()
+            constraints.trailing.equalToSuperview()
+            constraints.height.equalTo(50)
+        }
+    }
+    
+    private func setupSearchBar() {
+        searchView.addSubview(searchBar)
+        searchBar.snp.makeConstraints { constraints in
+            constraints.top.equalToSuperview().offset(5)
+            constraints.bottom.equalToSuperview().offset(-5)
+            constraints.leading.equalToSuperview().offset(32)
+            constraints.centerY.equalToSuperview()
+        }
+    }
+    
+    private func setupSearchButton() {
+        searchView.addSubview(searchButton)
+        searchButton.snp.makeConstraints { constraints in
+            constraints.leading.equalTo(searchBar.snp.trailing).offset(11)
+            constraints.trailing.equalToSuperview().offset(-37)
+            constraints.width.equalTo(34)
+            constraints.height.equalTo(34)
+            constraints.centerY.equalToSuperview()
+        }
+    }
+    
     
     private func setupHotSalesLablesView() {
         self.addSubview(hotSalesLablesView)
         hotSalesLablesView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(searchBarView.snp.bottom).offset(24)
+//            constraints.top.equalTo(searchBarView.snp.bottom).offset(24)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
         }
