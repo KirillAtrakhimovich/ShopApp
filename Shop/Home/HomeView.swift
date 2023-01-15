@@ -90,7 +90,7 @@ class HomeView: UIView {
     
     var searchBar: UISearchBar = {
         let searchBar = UISearchBar()
-        searchBar.searchTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        searchBar.searchTextField.backgroundColor = .white
         searchBar.barStyle = .black
         searchBar.layer.cornerRadius = searchBar.frame.height / 2
         searchBar.placeholder = "Search"
@@ -116,13 +116,19 @@ class HomeView: UIView {
         return searchButton
     }()
     
-    var hotSalesLablesView: UIView = {
+    var hotSalesView: UIView = {
         let searchBarView = UIView()
         searchBarView.backgroundColor = .darkGray
         return searchBarView
     }()
     
-    var hotSalesImageView: UIView = {
+    var hotSalesLabel: UIView = {
+        let searchBarView = UIView()
+        searchBarView.backgroundColor = .darkGray
+        return searchBarView
+    }()
+    
+    var hotSalesButton: UIView = {
         let hotSalesImageView = UIView()
         hotSalesImageView.backgroundColor = .green
         return hotSalesImageView
@@ -299,27 +305,27 @@ class HomeView: UIView {
     }
     
     
-    private func setupHotSalesLablesView() {
-        self.addSubview(hotSalesLablesView)
-        hotSalesLablesView.snp.makeConstraints { constraints in
-//            constraints.top.equalTo(searchBarView.snp.bottom).offset(24)
+    private func setupHotSalesView() {
+        self.addSubview(hotSalesView)
+        hotSalesView.snp.makeConstraints { constraints in
+            constraints.top.equalTo(searchBarView.snp.bottom).offset(24)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
         }
     }
 
-    private func setupHotSalesImageView() {
-        self.addSubview(hotSalesImageView)
-        hotSalesImageView.snp.makeConstraints { constraints in
+    private func setupHotSalesLabel() {
+        self.addSubview(hotSalesLabel)
+        hotSalesLabel.snp.makeConstraints { constraints in
             constraints.top.equalTo(hotSalesLablesView.snp.bottom).offset(10)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
         }
     }
     
-    private func setupBestSellerView() {
-        self.addSubview(bestSellerView)
-        bestSellerView.snp.makeConstraints { constraints in
+    private func setupHotSalesButton() {
+        self.addSubview(hotSalesButton)
+        hotSalesButton.snp.makeConstraints { constraints in
             constraints.top.equalTo(hotSalesImageView.snp.bottom).offset(10)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
