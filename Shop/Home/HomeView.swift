@@ -124,7 +124,7 @@ class HomeView: UIView {
     
     var hotSalesLabel: UIView = {
         let searchBarView = UIView()
-        searchBarView.backgroundColor = .darkGray
+        searchBarView.backgroundColor = .red
         return searchBarView
     }()
     
@@ -168,9 +168,9 @@ class HomeView: UIView {
         setupSearchView()
         setupSearchBar()
         setupSearchButton()
-//        setupHotSalesLablesView()
-//        setupHotSalesImageView()
-//        setupBestSellerView()
+        setupHotSalesView()
+        setupHotSalesLabel()
+        setupHotSalesButton()
 //        setupMobileColletionView()
         
     }
@@ -308,28 +308,31 @@ class HomeView: UIView {
     private func setupHotSalesView() {
         self.addSubview(hotSalesView)
         hotSalesView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(searchBarView.snp.bottom).offset(24)
+            constraints.top.equalTo(searchView.snp.bottom).offset(24)
             constraints.leading.equalToSuperview().offset(5)
             constraints.trailing.equalToSuperview().offset(-5)
+            constraints.height.equalTo(50)
         }
     }
 
     private func setupHotSalesLabel() {
-        self.addSubview(hotSalesLabel)
+        hotSalesView.addSubview(hotSalesLabel)
         hotSalesLabel.snp.makeConstraints { constraints in
-            constraints.top.equalTo(hotSalesLablesView.snp.bottom).offset(10)
-            constraints.leading.equalToSuperview().offset(5)
-            constraints.trailing.equalToSuperview().offset(-5)
+            constraints.top.equalToSuperview().offset(5)
+            constraints.bottom.equalToSuperview().offset(-5)
+            constraints.centerY.equalToSuperview()
+            constraints.leading.equalToSuperview().offset(17)
         }
     }
     
     private func setupHotSalesButton() {
-        self.addSubview(hotSalesButton)
+        hotSalesView.addSubview(hotSalesButton)
         hotSalesButton.snp.makeConstraints { constraints in
-            constraints.top.equalTo(hotSalesImageView.snp.bottom).offset(10)
+            constraints.top.equalToSuperview().offset(5)
+            constraints.bottom.equalToSuperview().offset(-5)
+            constraints.centerY.equalToSuperview()
+            constraints.trailing.equalToSuperview().offset(-33)
             constraints.leading.equalToSuperview().offset(5)
-            constraints.trailing.equalToSuperview().offset(-5)
-            constraints.bottom.equalToSuperview()
         }
     }
     
