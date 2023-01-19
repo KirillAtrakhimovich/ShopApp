@@ -17,7 +17,8 @@ final class TabBarController: UITabBarController {
     private func generateTabBar() {
         viewControllers = [
             generateVC(
-                viewController: HomeViewController(),
+                viewController: HomeViewController(hotSalesCollectionView: HotSalesCollectionController(),
+                                                   phonesCollectionView: PhonesCollection()),
                 title: "Explorer",
                 image: UIImage(systemName: "globe")
             ),

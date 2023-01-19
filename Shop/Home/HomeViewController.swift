@@ -10,11 +10,25 @@ import UIKit
 class HomeViewController: UIViewController {
     
     private let homeView = HomeView()
+    private var hotSalesCollectionView: HotSalesCollectionController?
+    private var phonesCollectionView: PhonesCollection?
     
     override func loadView() {
         view = homeView
     }
     
+    init(hotSalesCollectionView: HotSalesCollectionController, phonesCollectionView: PhonesCollection) {
+        self.hotSalesCollectionView = hotSalesCollectionView
+        self.phonesCollectionView = phonesCollectionView
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.hotSalesCollectionView = nil
+        self.phonesCollectionView = nil
+    }
+ 
     override func viewDidLoad() {
         homeView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.9607843137, alpha: 1)
         homeView.setup()
@@ -24,7 +38,10 @@ class HomeViewController: UIViewController {
     private func setupCollectionSettings() {
         homeView.categoryColletionView.delegate = self
         homeView.categoryColletionView.dataSource = self
-
+        homeView.hotSalesColletionView.delegate = hotSalesCollectionView
+        homeView.hotSalesColletionView.dataSource = hotSalesCollectionView
+        homeView.phonesColletionView.delegate = phonesCollectionView
+        homeView.phonesColletionView.dataSource = phonesCollectionView
     }
 }
 
@@ -36,8 +53,9 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-            myCell.backgroundColor = .blue
-            return myCell
+        myCell.backgroundColor = .blue
+        myCell.layer.cornerRadius = myCell.frame.width / 2
+        return myCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
