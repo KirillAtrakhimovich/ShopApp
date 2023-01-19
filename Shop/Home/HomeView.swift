@@ -10,6 +10,19 @@ import SnapKit
 
 class HomeView: UIView {
     
+    var scrollView: UIScrollView = {
+       let scrollView = UIScrollView()
+        scrollView.isScrollEnabled = true
+        return scrollView
+    }()
+    
+    var contentView: UIView = {
+        let contentView = UIView()
+        contentView.isUserInteractionEnabled = true
+        
+        return contentView
+    }()
+    
     var locationView: UIView = {
         let locationView = UIView()
         locationView.backgroundColor = .clear
@@ -65,7 +78,6 @@ class HomeView: UIView {
     
     var selectCategoryButton: UIButton = {
         let selectCategoryButton = UIButton()
-        selectCategoryButton.tintColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
         selectCategoryButton.setTitleColor(#colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1), for: .normal)
         selectCategoryButton.titleLabel?.font = UIFont(name: "Mark Pro", size: 15)
         selectCategoryButton.setTitle("view all", for: .normal)
@@ -79,7 +91,6 @@ class HomeView: UIView {
         categoryColletion.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         categoryColletion.translatesAutoresizingMaskIntoConstraints = false
         categoryColletion.backgroundColor = .brown
-        
         return categoryColletion
     }()
     
@@ -117,35 +128,67 @@ class HomeView: UIView {
     }()
     
     var hotSalesView: UIView = {
-        let searchBarView = UIView()
-        searchBarView.backgroundColor = .darkGray
-        return searchBarView
+        let hotSalesView = UIView()
+        return hotSalesView
     }()
     
-    var hotSalesLabel: UIView = {
-        let searchBarView = UIView()
-        searchBarView.backgroundColor = .red
-        return searchBarView
+    var hotSalesLabel: UILabel = {
+        let hotSalesLabel = UILabel()
+        hotSalesLabel.textColor = .black
+        hotSalesLabel.text = "Hot sales"
+        hotSalesLabel.font = UIFont(name: "Mark Pro", size: 25)
+        return hotSalesLabel
     }()
     
-    var hotSalesButton: UIView = {
-        let hotSalesImageView = UIView()
-        hotSalesImageView.backgroundColor = .green
-        return hotSalesImageView
+    var hotSalesButton: UIButton = {
+        let hotSalesButton = UIButton()
+        hotSalesButton.setTitleColor(#colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1), for: .normal)
+        hotSalesButton.titleLabel?.font = UIFont(name: "Mark Pro", size: 15)
+        hotSalesButton.setTitle("see more", for: .normal)
+        return hotSalesButton
+    }()
+    
+    var hotSalesColletionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let hotSalesColletionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        hotSalesColletionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "hotSalesCell")
+        hotSalesColletionView.translatesAutoresizingMaskIntoConstraints = false
+        hotSalesColletionView.backgroundColor = .brown
+        hotSalesColletionView.isPagingEnabled = true
+        return hotSalesColletionView
     }()
     
     var bestSellerView: UIView = {
         let bestSellerView = UIView()
-        bestSellerView.backgroundColor = .orange
         return bestSellerView
     }()
     
-    var mobileColletionView: UICollectionView = {
-        let layout = UICollectionViewLayout()
-        let mobileColletionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        mobileColletionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        mobileColletionView.backgroundColor = .brown
-        return mobileColletionView
+    var bestSellerLabel: UILabel = {
+        let bestSellerLabel = UILabel()
+        bestSellerLabel.textColor = .black
+        bestSellerLabel.text = "Best Seller"
+        bestSellerLabel.font = UIFont(name: "Mark Pro", size: 25)
+        return bestSellerLabel
+    }()
+    
+    var bestSellerButton: UIButton = {
+        let bestSellerButton = UIButton()
+        bestSellerButton.setTitleColor(#colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1), for: .normal)
+        bestSellerButton.titleLabel?.font = UIFont(name: "Mark Pro", size: 15)
+        bestSellerButton.setTitle("see more", for: .normal)
+        return bestSellerButton
+    }()
+    
+    var phonesColletionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        let phonesColletionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        phonesColletionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "phoneCell")
+        phonesColletionView.translatesAutoresizingMaskIntoConstraints = false
+        phonesColletionView.backgroundColor = .brown
+        phonesColletionView.isPagingEnabled = true
+        return phonesColletionView
     }()
     
     func setup() {
@@ -155,6 +198,8 @@ class HomeView: UIView {
         selectCategoryLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
         selectCategoryButton.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
         
+        setupScrollView()
+        setupContentView()
         setupLocationView()
         setupLocationLabel()
         setupLocationImage()
@@ -171,14 +216,33 @@ class HomeView: UIView {
         setupHotSalesView()
         setupHotSalesLabel()
         setupHotSalesButton()
-//        setupMobileColletionView()
-        
+        setupHotSalesCollectionView()
+        setupBestSellerView()
+        setupBestSellerLabel()
+        setupBestSellerButton()
+        setupPhonesCollection()
+    }
+    
+    private func setupScrollView() {
+        self.addSubview(scrollView)
+        scrollView.snp.makeConstraints { constraints in
+            constraints.top.bottom.equalTo(safeAreaLayoutGuide)
+            constraints.leading.trailing.equalToSuperview()
+            constraints.width.equalToSuperview()
+        }
+    }
+    
+    private func setupContentView() {
+        scrollView.addSubview(contentView)
+        contentView.snp.makeConstraints { constraints in
+            constraints.width.top.bottom.trailing.leading.equalToSuperview()
+        }
     }
     
     private func setupLocationView() {
-        self.addSubview(locationView)
+        contentView.addSubview(locationView)
         locationView.snp.makeConstraints { constraints in
-            constraints.top.equalToSuperview().offset(59)
+            constraints.top.equalToSuperview()
             constraints.leading.equalToSuperview()
             constraints.trailing.equalToSuperview()
         }
@@ -235,7 +299,7 @@ class HomeView: UIView {
     }
     
     private func setupSelectCategoryView() {
-        self.addSubview(selectCategoryView)
+        contentView.addSubview(selectCategoryView)
         selectCategoryView.snp.makeConstraints { constraints in
             constraints.top.equalTo(locationView.snp.bottom).offset(8)
             constraints.leading.equalToSuperview()
@@ -264,7 +328,7 @@ class HomeView: UIView {
     }
     
     private func setupCategoryColletionView() {
-        self.addSubview(categoryColletionView)
+        contentView.addSubview(categoryColletionView)
         categoryColletionView.snp.makeConstraints { constraints in
             constraints.top.equalTo(selectCategoryView.snp.bottom).offset(5)
             constraints.trailing.equalToSuperview()
@@ -274,7 +338,7 @@ class HomeView: UIView {
     }
     
     private func setupSearchView() {
-        self.addSubview(searchView)
+        contentView.addSubview(searchView)
         searchView.snp.makeConstraints { constraints in
             constraints.top.equalTo(categoryColletionView.snp.bottom)
             constraints.leading.equalToSuperview()
@@ -306,12 +370,11 @@ class HomeView: UIView {
     
     
     private func setupHotSalesView() {
-        self.addSubview(hotSalesView)
+        contentView.addSubview(hotSalesView)
         hotSalesView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(searchView.snp.bottom).offset(24)
-            constraints.leading.equalToSuperview().offset(5)
-            constraints.trailing.equalToSuperview().offset(-5)
-            constraints.height.equalTo(50)
+            constraints.top.equalTo(searchView.snp.bottom).offset(19)
+            constraints.leading.equalToSuperview()
+            constraints.trailing.equalToSuperview()
         }
     }
 
@@ -332,16 +395,57 @@ class HomeView: UIView {
             constraints.bottom.equalToSuperview().offset(-5)
             constraints.centerY.equalToSuperview()
             constraints.trailing.equalToSuperview().offset(-33)
-            constraints.leading.equalToSuperview().offset(5)
+            constraints.leading.equalTo(hotSalesLabel.snp.trailing).offset(5)
         }
     }
     
-    private func setupMobileColletionView() {
-        self.addSubview(mobileColletionView)
-        mobileColletionView.snp.makeConstraints { constraints in
-            constraints.top.equalTo(bestSellerView.snp.bottom).offset(16)
-            constraints.leading.equalToSuperview().offset(5)
-            constraints.trailing.equalToSuperview().offset(-5)
+    private func setupHotSalesCollectionView() {
+        contentView.addSubview(hotSalesColletionView)
+        hotSalesColletionView.snp.makeConstraints { constraints in
+            constraints.top.equalTo(hotSalesView.snp.bottom).offset(5)
+            constraints.trailing.equalToSuperview()
+            constraints.leading.equalToSuperview()
+            constraints.height.equalTo(142)
+        }
+    }
+    
+    private func setupBestSellerView() {
+        contentView.addSubview(bestSellerView)
+        bestSellerView.snp.makeConstraints { constraints in
+            constraints.top.equalTo(hotSalesColletionView.snp.bottom).offset(19)
+            constraints.leading.equalToSuperview()
+            constraints.trailing.equalToSuperview()
+        }
+    }
+
+    private func setupBestSellerLabel() {
+        bestSellerView.addSubview(bestSellerLabel)
+        bestSellerLabel.snp.makeConstraints { constraints in
+            constraints.top.equalToSuperview().offset(5)
+            constraints.bottom.equalToSuperview().offset(-5)
+            constraints.centerY.equalToSuperview()
+            constraints.leading.equalToSuperview().offset(17)
+        }
+    }
+    
+    private func setupBestSellerButton() {
+        bestSellerView.addSubview(bestSellerButton)
+        bestSellerButton.snp.makeConstraints { constraints in
+            constraints.top.equalToSuperview().offset(5)
+            constraints.bottom.equalToSuperview().offset(-5)
+            constraints.centerY.equalToSuperview()
+            constraints.trailing.equalToSuperview().offset(-33)
+            constraints.leading.equalTo(hotSalesLabel.snp.trailing).offset(5)
+        }
+    }
+    
+    private func setupPhonesCollection() {
+        contentView.addSubview(phonesColletionView)
+        phonesColletionView.snp.makeConstraints { constraints in
+            constraints.top.equalTo(bestSellerView.snp.bottom).offset(5)
+            constraints.trailing.equalToSuperview()
+            constraints.leading.equalToSuperview()
+            constraints.height.equalTo(400)
         }
     }
     
