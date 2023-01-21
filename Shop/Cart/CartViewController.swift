@@ -16,6 +16,8 @@ class CartViewController: UIViewController {
     }
     
     override func viewDidLoad() {
-        cartView.backgroundColor = .green
+        cartView.backgroundColor = .white
+        cartView.setup()
+        
     }
 }

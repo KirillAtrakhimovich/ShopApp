@@ -10,19 +10,6 @@ import SnapKit
 
 class HomeView: UIView {
     
-    var scrollView: UIScrollView = {
-       let scrollView = UIScrollView()
-        scrollView.isScrollEnabled = true
-        return scrollView
-    }()
-    
-    var contentView: UIView = {
-        let contentView = UIView()
-        contentView.isUserInteractionEnabled = true
-        
-        return contentView
-    }()
-    
     var locationView: UIView = {
         let locationView = UIView()
         locationView.backgroundColor = .clear
@@ -198,8 +185,6 @@ class HomeView: UIView {
         selectCategoryLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
         selectCategoryButton.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
         
-        setupScrollView()
-        setupContentView()
         setupLocationView()
         setupLocationLabel()
         setupLocationImage()
@@ -223,26 +208,10 @@ class HomeView: UIView {
         setupPhonesCollection()
     }
     
-    private func setupScrollView() {
-        self.addSubview(scrollView)
-        scrollView.snp.makeConstraints { constraints in
-            constraints.top.bottom.equalTo(safeAreaLayoutGuide)
-            constraints.leading.trailing.equalToSuperview()
-            constraints.width.equalToSuperview()
-        }
-    }
-    
-    private func setupContentView() {
-        scrollView.addSubview(contentView)
-        contentView.snp.makeConstraints { constraints in
-            constraints.width.top.bottom.trailing.leading.equalToSuperview()
-        }
-    }
-    
     private func setupLocationView() {
-        contentView.addSubview(locationView)
+        self.addSubview(locationView)
         locationView.snp.makeConstraints { constraints in
-            constraints.top.equalToSuperview()
+            constraints.top.equalTo(safeAreaLayoutGuide)
             constraints.leading.equalToSuperview()
             constraints.trailing.equalToSuperview()
         }
@@ -299,7 +268,7 @@ class HomeView: UIView {
     }
     
     private func setupSelectCategoryView() {
-        contentView.addSubview(selectCategoryView)
+        self.addSubview(selectCategoryView)
         selectCategoryView.snp.makeConstraints { constraints in
             constraints.top.equalTo(locationView.snp.bottom).offset(8)
             constraints.leading.equalToSuperview()
@@ -328,7 +297,7 @@ class HomeView: UIView {
     }
     
     private func setupCategoryColletionView() {
-        contentView.addSubview(categoryColletionView)
+        self.addSubview(categoryColletionView)
         categoryColletionView.snp.makeConstraints { constraints in
             constraints.top.equalTo(selectCategoryView.snp.bottom).offset(5)
             constraints.trailing.equalToSuperview()
@@ -338,7 +307,7 @@ class HomeView: UIView {
     }
     
     private func setupSearchView() {
-        contentView.addSubview(searchView)
+        self.addSubview(searchView)
         searchView.snp.makeConstraints { constraints in
             constraints.top.equalTo(categoryColletionView.snp.bottom)
             constraints.leading.equalToSuperview()
@@ -370,7 +339,7 @@ class HomeView: UIView {
     
     
     private func setupHotSalesView() {
-        contentView.addSubview(hotSalesView)
+        self.addSubview(hotSalesView)
         hotSalesView.snp.makeConstraints { constraints in
             constraints.top.equalTo(searchView.snp.bottom).offset(19)
             constraints.leading.equalToSuperview()
@@ -400,7 +369,7 @@ class HomeView: UIView {
     }
     
     private func setupHotSalesCollectionView() {
-        contentView.addSubview(hotSalesColletionView)
+        self.addSubview(hotSalesColletionView)
         hotSalesColletionView.snp.makeConstraints { constraints in
             constraints.top.equalTo(hotSalesView.snp.bottom).offset(5)
             constraints.trailing.equalToSuperview()
@@ -410,7 +379,7 @@ class HomeView: UIView {
     }
     
     private func setupBestSellerView() {
-        contentView.addSubview(bestSellerView)
+        self.addSubview(bestSellerView)
         bestSellerView.snp.makeConstraints { constraints in
             constraints.top.equalTo(hotSalesColletionView.snp.bottom).offset(19)
             constraints.leading.equalToSuperview()
@@ -440,7 +409,7 @@ class HomeView: UIView {
     }
     
     private func setupPhonesCollection() {
-        contentView.addSubview(phonesColletionView)
+        self.addSubview(phonesColletionView)
         phonesColletionView.snp.makeConstraints { constraints in
             constraints.top.equalTo(bestSellerView.snp.bottom).offset(5)
             constraints.trailing.equalToSuperview()
