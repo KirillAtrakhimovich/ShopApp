@@ -69,6 +69,41 @@ class CartView: UIView {
         return smallLine
     }()
     
+    var deliveryView: UIView = {
+        let deliveryView = UIView()
+        deliveryView.backgroundColor = .gray
+        return deliveryView
+    }()
+    
+    var deliveryLabel: UILabel = {
+        let deliveryLabel = UILabel()
+        deliveryLabel.backgroundColor = .gray
+        return deliveryLabel
+    }()
+    
+    var deliveryPrice: UILabel = {
+        let deliveryPrice = UILabel()
+        deliveryPrice.backgroundColor = .gray
+        return deliveryPrice
+    }()
+    
+    var totalView: UIView = {
+        let totalView = UIView()
+        totalView.backgroundColor = .gray
+        return totalView
+    }()
+    
+    var totalLabel: UILabel = {
+        let totalLabel = UILabel()
+        totalLabel.backgroundColor = .gray
+        return totalLabel
+    }()
+    
+    var totalPrice: UILabel = {
+        let totalPrice = UILabel()
+        totalPrice.backgroundColor = .gray
+        return totalPrice
+    }()
     func setup() {
         setupTopView()
         setupBackButton()
@@ -78,6 +113,11 @@ class CartView: UIView {
         setupMainView()
         setupCheckoutButton()
         setupSmallLine()
+        setupDeliveryView()
+        setupDeliveryLabel()
+        setupDeliveryPrice()
+        setupTotalView()
+        setup
     }
     
     private func setupTopView() {
@@ -142,6 +182,24 @@ class CartView: UIView {
         checkoutButton.snp.makeConstraints { constraints in
             constraints.leading.equalToSuperview().offset(44)
             constraints.bottom.trailing.equalToSuperview().offset(-44)
+        }
+    }
+    
+    private func setupSmallLine() {
+        mainView.addSubview(smallLine)
+        smallLine.snp.makeConstraints { constraints in
+            constraints.leading.trailing.equalToSuperview()
+            constraints.bottom.equalTo(checkoutButton.snp.top).offset(-27)
+            constraints.height.equalTo(1)
+        }
+    }
+    
+    private func setupSmallLine() {
+        mainView.addSubview(smallLine)
+        smallLine.snp.makeConstraints { constraints in
+            constraints.leading.trailing.equalToSuperview()
+            constraints.bottom.equalTo(checkoutButton.snp.top).offset(-27)
+            constraints.height.equalTo(1)
         }
     }
     
