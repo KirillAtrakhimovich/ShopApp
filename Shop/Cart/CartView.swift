@@ -65,13 +65,13 @@ class CartView: UIView {
     
     var smallLine: UIView = {
         let smallLine = UIView()
-        smallLine.backgroundColor = .gray
+        smallLine.backgroundColor = .lightGray
         return smallLine
     }()
     
     var deliveryView: UIView = {
         let deliveryView = UIView()
-        deliveryView.backgroundColor = .gray
+        deliveryView.backgroundColor = .green
         return deliveryView
     }()
     
@@ -89,7 +89,7 @@ class CartView: UIView {
     
     var totalView: UIView = {
         let totalView = UIView()
-        totalView.backgroundColor = .gray
+        totalView.backgroundColor = .red
         return totalView
     }()
     
@@ -104,6 +104,13 @@ class CartView: UIView {
         totalPrice.backgroundColor = .gray
         return totalPrice
     }()
+    
+    var bigLine: UIView = {
+        let smallLine = UIView()
+        smallLine.backgroundColor = .lightGray
+        return smallLine
+    }()
+    
     func setup() {
         setupTopView()
         setupBackButton()
@@ -114,10 +121,12 @@ class CartView: UIView {
         setupCheckoutButton()
         setupSmallLine()
         setupDeliveryView()
-        setupDeliveryLabel()
-        setupDeliveryPrice()
+//        setupDeliveryLabel()
+//        setupDeliveryPrice()
         setupTotalView()
-        setup
+//        setupTotalLabel()
+//        setupTotalPrice()
+        setupBigLine()
     }
     
     private func setupTopView() {
@@ -194,7 +203,16 @@ class CartView: UIView {
         }
     }
     
-    private func setupSmallLine() {
+    private func setupDeliveryView() {
+        mainView.addSubview(deliveryView)
+        deliveryView.snp.makeConstraints { constraints in
+            constraints.leading.equalToSuperview()
+            constraints.trailing.equalToSuperview()
+            constraints.bottom.equalTo(smallLine.snp.top).offset(-26)
+        }
+    }
+    
+    private func setupDeliveryLabel() {
         mainView.addSubview(smallLine)
         smallLine.snp.makeConstraints { constraints in
             constraints.leading.trailing.equalToSuperview()
@@ -203,12 +221,47 @@ class CartView: UIView {
         }
     }
     
-    private func setupSmallLine() {
+    private func setupDeliveryPrice() {
         mainView.addSubview(smallLine)
         smallLine.snp.makeConstraints { constraints in
             constraints.leading.trailing.equalToSuperview()
             constraints.bottom.equalTo(checkoutButton.snp.top).offset(-27)
             constraints.height.equalTo(1)
+        }
+    }
+    
+    private func setupTotalView() {
+        mainView.addSubview(totalView)
+        totalView.snp.makeConstraints { constraints in
+            constraints.leading.trailing.equalToSuperview()
+            constraints.bottom.equalTo(deliveryView.snp.top).offset(-12)
+        }
+    }
+    
+    private func setupTotalLabel() {
+        mainView.addSubview(smallLine)
+        smallLine.snp.makeConstraints { constraints in
+            constraints.leading.trailing.equalToSuperview()
+            constraints.bottom.equalTo(checkoutButton.snp.top).offset(-27)
+            constraints.height.equalTo(1)
+        }
+    }
+    
+    private func setupTotalPrice() {
+        mainView.addSubview(smallLine)
+        smallLine.snp.makeConstraints { constraints in
+            constraints.leading.trailing.equalToSuperview()
+            constraints.bottom.equalTo(checkoutButton.snp.top).offset(-27)
+            constraints.height.equalTo(1)
+        }
+    }
+    
+    private func setupBigLine() {
+        mainView.addSubview(bigLine)
+        bigLine.snp.makeConstraints { constraints in
+            constraints.leading.trailing.equalToSuperview()
+            constraints.bottom.equalTo(totalView.snp.top).offset(-15)
+            constraints.height.equalTo(2)
         }
     }
 }
