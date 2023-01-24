@@ -109,7 +109,6 @@ class HomeView: UIView {
         let searchButton = UIButton()
         searchButton.backgroundColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
         searchButton.setBackgroundImage(UIImage(systemName: "qrcode"), for: .normal)
-        searchButton.layer.cornerRadius = searchButton.frame.height / 2
         searchButton.layer.masksToBounds = true
         return searchButton
     }()
@@ -331,8 +330,7 @@ class HomeView: UIView {
         searchButton.snp.makeConstraints { constraints in
             constraints.leading.equalTo(searchBar.snp.trailing).offset(11)
             constraints.trailing.equalToSuperview().offset(-37)
-            constraints.width.equalTo(34)
-            constraints.height.equalTo(34)
+            constraints.width.height.equalTo(34)
             constraints.centerY.equalToSuperview()
         }
     }
