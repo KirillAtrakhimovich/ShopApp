@@ -90,17 +90,19 @@ class HomeView: UIView {
         let searchBar = UISearchBar()
         searchBar.searchTextField.backgroundColor = .white
         searchBar.barStyle = .black
-        searchBar.layer.cornerRadius = searchBar.frame.height / 2
+        searchBar.layer.borderColor = UIColor.white.cgColor
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.cornerRadius = 20
+        searchBar.clipsToBounds = true
         searchBar.placeholder = "Search"
-        searchBar.searchBarStyle = .minimal
+        searchBar.searchTextField.font = UIFont(name: "Mark Pro", size: 12)
         searchBar.backgroundColor = .white
         searchBar.barTintColor = .white
+        searchBar.setImage(UIImage(named: "search_icon"), for: .search, state: .normal)
         if let textField = searchBar.value(forKey: "searchField") as? UITextField,
             let iconView = textField.leftView as? UIImageView {
             textField.tintColor = .black
             textField.textColor = .black
-            iconView.image = iconView.image?.withRenderingMode(UIImage.RenderingMode.alwaysTemplate)
-            iconView.tintColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
         }
         return searchBar
     }()
@@ -108,9 +110,14 @@ class HomeView: UIView {
     var searchButton: UIButton = {
         let searchButton = UIButton()
         searchButton.backgroundColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
-        searchButton.setBackgroundImage(UIImage(systemName: "qrcode"), for: .normal)
-        searchButton.layer.masksToBounds = true
+        searchButton.layer.cornerRadius = 17
         return searchButton
+    }()
+    
+    var searchButtonImage: UIImageView = {
+        let searchButtonImage = UIImageView()
+        searchButtonImage.image = UIImage(named: "qrCode_image")
+        return searchButtonImage
     }()
     
     var hotSalesView: UIView = {
@@ -197,6 +204,7 @@ class HomeView: UIView {
         setupSearchView()
         setupSearchBar()
         setupSearchButton()
+        setupSearchButtonImage()
         setupHotSalesView()
         setupHotSalesLabel()
         setupHotSalesButton()
@@ -335,6 +343,15 @@ class HomeView: UIView {
         }
     }
     
+    private func setupSearchButtonImage() {
+        searchButton.addSubview(searchButtonImage)
+        searchButtonImage.snp.makeConstraints { constraints in
+            constraints.leading.equalTo(searchButton.snp.leading).offset(9.61)
+            constraints.trailing.equalTo(searchButton.snp.trailing).offset(-9.61)
+            constraints.top.equalTo(searchButton.snp.top).offset(9.61)
+            constraints.bottom.equalTo(searchButton.snp.bottom).offset(-9.61)
+        }
+    }
     
     private func setupHotSalesView() {
         self.addSubview(hotSalesView)
