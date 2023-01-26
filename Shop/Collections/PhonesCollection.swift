@@ -1,10 +1,3 @@
-//
-//  PhonesCollection.swift
-//  Shop
-//
-//  Created by Kirill Atrakhimovich on 19.01.23.
-//
-
 import UIKit
 
 class PhonesCollection: NSObject, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -13,12 +6,19 @@ class PhonesCollection: NSObject, UICollectionViewDataSource, UICollectionViewDe
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "phoneCell", for: indexPath)
+        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: Constraints.identifier,
+                                                        for: indexPath)
             myCell.backgroundColor = .blue
             return myCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 181, height: 227)
+    }
+}
+
+extension PhonesCollection {
+    struct Constraints {
+        static let identifier = "phoneCell"
     }
 }
