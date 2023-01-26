@@ -1,10 +1,3 @@
-//
-//  TabBarController.swift
-//  Shop
-//
-//  Created by Kirill Atrakhimovich on 22.12.22.
-//
-
 import UIKit
 
 final class TabBarController: UITabBarController {
@@ -19,23 +12,23 @@ final class TabBarController: UITabBarController {
             generateVC(
                 viewController: HomeViewController(hotSalesCollectionView: HotSalesCollectionController(),
                                                    phonesCollectionView: PhonesCollection()),
-                title: "Explorer",
-                image: UIImage(systemName: "globe")
+                title: Constraints.explorerTitle,
+                image: Constraints.explorerImage
             ),
             generateVC(
                 viewController: CartViewController(),
-                title: "Cart",
-                image: UIImage(systemName: "cart")
+                title: Constraints.cartTitle,
+                image: Constraints.cartImage
             ),
             generateVC(
                 viewController: FavoriteViewController(),
-                title: "Liked",
-                image: UIImage(systemName: "heart")
+                title: Constraints.likedTitle,
+                image: Constraints.likedImage
             ),
             generateVC(
                 viewController: UserViewController(),
-                title: "Account",
-                image: UIImage(systemName: "person")
+                title: Constraints.accountTitle,
+                image: Constraints.accountImage
             )
         ]
     }
@@ -71,5 +64,18 @@ final class TabBarController: UITabBarController {
         tabBar.tintColor = .white
         tabBar.unselectedItemTintColor = .white
         roundLayer.fillColor = #colorLiteral(red: 0.004242728464, green: 0.0249658227, blue: 0.2701849341, alpha: 1)
+    }
+}
+
+extension TabBarController {
+    struct Constraints {
+        static let explorerTitle = "Explorer"
+        static let explorerImage = UIImage(systemName: "globe")
+        static let cartTitle = "Cart"
+        static let cartImage = UIImage(systemName: "cart")
+        static let likedTitle = "Liked"
+        static let likedImage = UIImage(systemName: "heart")
+        static let accountTitle = "Account"
+        static let accountImage = UIImage(systemName: "person")
     }
 }
