@@ -11,48 +11,48 @@ class CartView: UIView {
         let backButton = UIButton()
         backButton.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
         backButton.layer.cornerRadius = 10
-        backButton.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        backButton.setImage(UIImage(systemName: Constraints.backButtonImage), for: .normal)
         backButton.tintColor = .white
         return backButton
     }()
     
     var addressLabel: UILabel = {
-        let locationLabel = UILabel()
-        locationLabel.text = "Add address"
-        locationLabel.textColor = .black
-        locationLabel.font = UIFont(name: "Mark Pro", size: 15)
-        return locationLabel
+        let addressLabel = UILabel()
+        addressLabel.text = Constraints.addressLabel
+        addressLabel.textColor = .black
+        addressLabel.font = Constraints.standartSizeFont
+        return addressLabel
     }()
     
     var addressButton: UIButton = {
         let addressButton = UIButton()
         addressButton.backgroundColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
         addressButton.layer.cornerRadius = 10
-        addressButton.setImage(UIImage(named: "full_loc_image"), for: .normal)
+        addressButton.setImage(UIImage(named: Constraints.addressButtonImage), for: .normal)
         return addressButton
     }()
     
     var myCartLabel: UILabel = {
-        let locationLabel = UILabel()
-        locationLabel.text = "My Cart"
-        locationLabel.textColor = .black
-        locationLabel.font = UIFont(name: "Mark Pro", size: 35)
-        return locationLabel
+        let myCartLabel = UILabel()
+        myCartLabel.text = Constraints.myCartLabel
+        myCartLabel.textColor = .black
+        myCartLabel.font = Constraints.biggestSizeFont
+        return myCartLabel
     }()
     
     var mainView: UIView = {
-        let topView = UIView()
-        topView.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
-        topView.layer.cornerRadius = 30
-        return topView
+        let mainView = UIView()
+        mainView.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
+        mainView.layer.cornerRadius = 30
+        return mainView
     }()
     
     var checkoutButton: UIButton = {
         let checkoutButton = UIButton()
         checkoutButton.backgroundColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
         checkoutButton.layer.cornerRadius = 10
-        checkoutButton.titleLabel?.font = UIFont(name: "Mark Pro", size: 20)
-        checkoutButton.setTitle("Checkout", for: .normal)
+        checkoutButton.titleLabel?.font = Constraints.middleSizeFont
+        checkoutButton.setTitle(Constraints.checkButtonTitle, for: .normal)
         return checkoutButton
     }()
     
@@ -69,17 +69,17 @@ class CartView: UIView {
     
     var deliveryLabel: UILabel = {
         let deliveryLabel = UILabel()
-        deliveryLabel.text = "Delivery"
+        deliveryLabel.text = Constraints.deliveryLabel
         deliveryLabel.textColor = .white
-        deliveryLabel.font = UIFont(name: "Mark Pro", size: 15)
+        deliveryLabel.font = Constraints.standartSizeFont
         return deliveryLabel
     }()
     
     var deliveryPrice: UILabel = {
         let deliveryPrice = UILabel()
-        deliveryPrice.text = "Free"
+        deliveryPrice.text = Constraints.deliveryPrice
         deliveryPrice.textColor = .white
-        deliveryPrice.font = UIFont(name: "Mark Pro", size: 15)
+        deliveryPrice.font = Constraints.standartSizeFont
         return deliveryPrice
     }()
     
@@ -90,17 +90,17 @@ class CartView: UIView {
     
     var totalLabel: UILabel = {
         let totalLabel = UILabel()
-        totalLabel.text = "Total"
+        totalLabel.text = Constraints.totalLabel
         totalLabel.textColor = .white
-        totalLabel.font = UIFont(name: "Mark Pro", size: 15)
+        totalLabel.font = Constraints.standartSizeFont
         return totalLabel
     }()
     
     var totalPrice: UILabel = {
         let totalPrice = UILabel()
-        totalPrice.text = "$6,000 us"
+        totalPrice.text = Constraints.totalPrice
         totalPrice.textColor = .white
-        totalPrice.font = UIFont(name: "Mark Pro", size: 15)
+        totalPrice.font = Constraints.standartSizeFont
         return totalPrice
     }()
     
@@ -281,5 +281,22 @@ class CartView: UIView {
             constraints.bottom.equalTo(bigLine.snp.top).offset(-20)
             constraints.top.equalToSuperview().offset(20)
         }
+    }
+}
+
+extension CartView {
+    struct Constraints {
+        static let backButtonImage = "chevron.backward"
+        static let addressLabel = "Add address"
+        static let standartSizeFont = UIFont(name: "Mark Pro", size: 15)
+        static let addressButtonImage = "full_loc_image"
+        static let myCartLabel = "My Cart"
+        static let biggestSizeFont = UIFont(name: "Mark Pro", size: 35)
+        static let middleSizeFont = UIFont(name: "Mark Pro", size: 20)
+        static let checkButtonTitle = "Checkout"
+        static let deliveryLabel = "Delivery"
+        static let deliveryPrice = "Free"
+        static let totalLabel = "Total"
+        static let totalPrice = "$6,000 us"
     }
 }
