@@ -6,7 +6,7 @@ class HotSalesCollectionController: NSObject, UICollectionViewDataSource, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: "hotSalesCell",
+        let myCell = collectionView.dequeueReusableCell(withReuseIdentifier: Constraints.identifier,
                                                         for: indexPath)
             myCell.backgroundColor = .blue
             return myCell
