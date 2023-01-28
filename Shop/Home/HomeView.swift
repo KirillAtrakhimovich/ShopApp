@@ -11,35 +11,37 @@ class HomeView: UIView {
     
     var locationLabel: UILabel = {
         let locationLabel = UILabel()
-        locationLabel.text = "Zihuatanejo, Gro"
+        locationLabel.text = Constraints.locationLabel
         locationLabel.textAlignment = .center
         locationLabel.textColor = .black
-        locationLabel.font = UIFont(name: "Mark Pro", size: 15)
+        locationLabel.font = Constraints.standartSizeFont
         return locationLabel
     }()
     
     var pointImage: UIImageView = {
         let pointImage = UIImageView()
-        pointImage.image = UIImage(named: "point_image")
+        pointImage.image = UIImage(named: Constraints.pointImageName)
         return pointImage
     }()
     
     var locationImage: UIImageView = {
         let locationImage = UIImageView()
-        locationImage.image = UIImage(named: "loc_image")
+        locationImage.image = UIImage(named: Constraints.locationImageName)
         return locationImage
     }()
     
     var locationMultyButton: UIButton = {
         let locationMultyButton = UIButton()
-        locationMultyButton.setBackgroundImage(UIImage(systemName: "chevron.down"), for: .normal)
+        locationMultyButton.setBackgroundImage(UIImage(systemName: Constraints.locationMultyButtonImage),
+                                               for: .normal)
         locationMultyButton.tintColor = .lightGray
         return locationMultyButton
     }()
     
     var filterButton: UIButton = {
         let filterButton = UIButton()
-        filterButton.setBackgroundImage(UIImage(named: "filter_image"), for: .normal)
+        filterButton.setBackgroundImage(UIImage(named: Constraints.filterButtonImageName),
+                                        for: .normal)
         return filterButton
     }()
 
@@ -51,16 +53,16 @@ class HomeView: UIView {
     var selectCategoryLabel: UILabel = {
         let selectCategoryLabel = UILabel()
         selectCategoryLabel.textColor = .black
-        selectCategoryLabel.text = "Select Category"
-        selectCategoryLabel.font = UIFont(name: "Mark Pro", size: 25)
+        selectCategoryLabel.text = Constraints.selectCategoryLabel
+        selectCategoryLabel.font = Constraints.biggestSizeFont
         return selectCategoryLabel
     }()
     
     var selectCategoryButton: UIButton = {
         let selectCategoryButton = UIButton()
-        selectCategoryButton.setTitleColor(#colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1), for: .normal)
-        selectCategoryButton.titleLabel?.font = UIFont(name: "Mark Pro", size: 15)
-        selectCategoryButton.setTitle("view all", for: .normal)
+        selectCategoryButton.setTitleColor(Constraints.orangeColor, for: .normal)
+        selectCategoryButton.titleLabel?.font = Constraints.standartSizeFont
+        selectCategoryButton.setTitle(Constraints.selectCategoryButtonLabel, for: .normal)
         return selectCategoryButton
     }()
     
@@ -68,7 +70,8 @@ class HomeView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let categoryColletion = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        categoryColletion.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        categoryColletion.register(UICollectionViewCell.self,
+                                   forCellWithReuseIdentifier: Constraints.categoryCollectionIdentifier)
         categoryColletion.translatesAutoresizingMaskIntoConstraints = false
         categoryColletion.backgroundColor = .brown
         return categoryColletion
@@ -87,12 +90,14 @@ class HomeView: UIView {
         searchBar.layer.borderWidth = 1
         searchBar.layer.cornerRadius = 20
         searchBar.clipsToBounds = true
-        searchBar.placeholder = "Search"
-        searchBar.searchTextField.font = UIFont(name: "Mark Pro", size: 12)
+        searchBar.placeholder = Constraints.searchBarPlaceholder
+        searchBar.searchTextField.font = Constraints.lessSizeFont
         searchBar.backgroundColor = .white
         searchBar.barTintColor = .white
-        searchBar.setImage(UIImage(named: "search_icon"), for: .search, state: .normal)
-        if let textField = searchBar.value(forKey: "searchField") as? UITextField,
+        searchBar.setImage(UIImage(named: Constraints.searchBarImageName),
+                           for: .search,
+                           state: .normal)
+        if let textField = searchBar.value(forKey: Constraints.searchBarKey) as? UITextField,
             let iconView = textField.leftView as? UIImageView {
             textField.tintColor = .black
             textField.textColor = .black
@@ -102,14 +107,14 @@ class HomeView: UIView {
     
     var searchButton: UIButton = {
         let searchButton = UIButton()
-        searchButton.backgroundColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
+        searchButton.backgroundColor = Constraints.orangeColor
         searchButton.layer.cornerRadius = 17
         return searchButton
     }()
     
     var searchButtonImage: UIImageView = {
         let searchButtonImage = UIImageView()
-        searchButtonImage.image = UIImage(named: "qrCode_image")
+        searchButtonImage.image = UIImage(named: Constraints.qrCodeImage)
         return searchButtonImage
     }()
     
@@ -121,16 +126,16 @@ class HomeView: UIView {
     var hotSalesLabel: UILabel = {
         let hotSalesLabel = UILabel()
         hotSalesLabel.textColor = .black
-        hotSalesLabel.text = "Hot sales"
-        hotSalesLabel.font = UIFont(name: "Mark Pro", size: 25)
+        hotSalesLabel.text = Constraints.hotSalesLabel
+        hotSalesLabel.font = Constraints.biggestSizeFont
         return hotSalesLabel
     }()
     
     var hotSalesButton: UIButton = {
         let hotSalesButton = UIButton()
-        hotSalesButton.setTitleColor(#colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1), for: .normal)
-        hotSalesButton.titleLabel?.font = UIFont(name: "Mark Pro", size: 15)
-        hotSalesButton.setTitle("see more", for: .normal)
+        hotSalesButton.setTitleColor(Constraints.orangeColor, for: .normal)
+        hotSalesButton.titleLabel?.font = Constraints.standartSizeFont
+        hotSalesButton.setTitle(Constraints.seeMoreLabel, for: .normal)
         return hotSalesButton
     }()
     
@@ -138,7 +143,7 @@ class HomeView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let hotSalesColletionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        hotSalesColletionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "hotSalesCell")
+        hotSalesColletionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: Constraints.hotSalesColletionIdentifier)
         hotSalesColletionView.translatesAutoresizingMaskIntoConstraints = false
         hotSalesColletionView.backgroundColor = .brown
         hotSalesColletionView.isPagingEnabled = true
@@ -153,16 +158,16 @@ class HomeView: UIView {
     var bestSellerLabel: UILabel = {
         let bestSellerLabel = UILabel()
         bestSellerLabel.textColor = .black
-        bestSellerLabel.text = "Best Seller"
-        bestSellerLabel.font = UIFont(name: "Mark Pro", size: 25)
+        bestSellerLabel.text = Constraints.bestSellerLabel
+        bestSellerLabel.font = Constraints.biggestSizeFont
         return bestSellerLabel
     }()
     
     var bestSellerButton: UIButton = {
         let bestSellerButton = UIButton()
-        bestSellerButton.setTitleColor(#colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1), for: .normal)
-        bestSellerButton.titleLabel?.font = UIFont(name: "Mark Pro", size: 15)
-        bestSellerButton.setTitle("see more", for: .normal)
+        bestSellerButton.setTitleColor(Constraints.orangeColor, for: .normal)
+        bestSellerButton.titleLabel?.font = Constraints.standartSizeFont
+        bestSellerButton.setTitle(Constraints.seeMoreLabel, for: .normal)
         return bestSellerButton
     }()
     
@@ -170,20 +175,18 @@ class HomeView: UIView {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let phonesColletionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        phonesColletionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "phoneCell")
+        phonesColletionView.register(UICollectionViewCell.self,
+                                     forCellWithReuseIdentifier: Constraints.phonesCollectionIdentifier)
         phonesColletionView.translatesAutoresizingMaskIntoConstraints = false
         phonesColletionView.backgroundColor = .brown
         phonesColletionView.isPagingEnabled = true
         return phonesColletionView
     }()
     
+    
+    
     func setup() {
-        
-        selectCategoryLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
-        selectCategoryButton.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
-        selectCategoryLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
-        selectCategoryButton.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
-        
+        setupContentPrioritySettings()
         setupLocationView()
         setupLocationLabel()
         setupLocationImage()
@@ -206,6 +209,13 @@ class HomeView: UIView {
         setupBestSellerLabel()
         setupBestSellerButton()
         setupPhonesCollection()
+    }
+    
+    private func setupContentPrioritySettings() {
+        selectCategoryLabel.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        selectCategoryButton.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        selectCategoryLabel.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
+        selectCategoryButton.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
     }
     
     private func setupLocationView() {
@@ -425,5 +435,30 @@ class HomeView: UIView {
             constraints.height.equalTo(400)
         }
     }
-    
+}
+
+extension HomeView {
+    struct Constraints {
+        static let locationLabel = "Zihuatanejo, Gro"
+        static let standartSizeFont = UIFont(name: "Mark Pro", size: 15)
+        static let pointImageName = "point_image"
+        static let locationImageName = "loc_image"
+        static let biggestSizeFont = UIFont(name: "Mark Pro", size: 25)
+        static let lessSizeFont = UIFont(name: "Mark Pro", size: 12)
+        static let locationMultyButtonImage = "chevron.down"
+        static let filterButtonImageName = "filter_image"
+        static let selectCategoryLabel = "Select Category"
+        static let orangeColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
+        static let selectCategoryButtonLabel = "view all"
+        static let categoryCollectionIdentifier = "cell"
+        static let searchBarPlaceholder = "Search"
+        static let searchBarImageName = "search_icon"
+        static let searchBarKey = "searchField"
+        static let qrCodeImage = "qrCode_image"
+        static let hotSalesLabel = "Hot sales"
+        static let seeMoreLabel = "see more"
+        static let hotSalesColletionIdentifier = "hotSalesCell"
+        static let bestSellerLabel = "Best Seller"
+        static let phonesCollectionIdentifier = "phoneCell"
+    }
 }

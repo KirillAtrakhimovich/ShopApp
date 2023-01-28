@@ -9,7 +9,7 @@ class CartView: UIView {
     
     var backButton: UIButton = {
         let backButton = UIButton()
-        backButton.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
+        backButton.backgroundColor = Constraints.darkBlueColor
         backButton.layer.cornerRadius = 10
         backButton.setImage(UIImage(systemName: Constraints.backButtonImage), for: .normal)
         backButton.tintColor = .white
@@ -26,7 +26,7 @@ class CartView: UIView {
     
     var addressButton: UIButton = {
         let addressButton = UIButton()
-        addressButton.backgroundColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
+        addressButton.backgroundColor = Constraints.orangeColor
         addressButton.layer.cornerRadius = 10
         addressButton.setImage(UIImage(named: Constraints.addressButtonImage), for: .normal)
         return addressButton
@@ -42,14 +42,14 @@ class CartView: UIView {
     
     var mainView: UIView = {
         let mainView = UIView()
-        mainView.backgroundColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
+        mainView.backgroundColor = Constraints.darkBlueColor
         mainView.layer.cornerRadius = 30
         return mainView
     }()
     
     var checkoutButton: UIButton = {
         let checkoutButton = UIButton()
-        checkoutButton.backgroundColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
+        checkoutButton.backgroundColor = Constraints.orangeColor
         checkoutButton.layer.cornerRadius = 10
         checkoutButton.titleLabel?.font = Constraints.middleSizeFont
         checkoutButton.setTitle(Constraints.checkButtonTitle, for: .normal)
@@ -58,7 +58,7 @@ class CartView: UIView {
     
     var smallLine: UIView = {
         let smallLine = UIView()
-        smallLine.backgroundColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 0.9999999404, alpha: 0.2044064351)
+        smallLine.backgroundColor = Constraints.smallLineColor
         return smallLine
     }()
     
@@ -106,7 +106,7 @@ class CartView: UIView {
     
     var bigLine: UIView = {
         let bigLine = UIView()
-        bigLine.backgroundColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 0.9999999404, alpha: 0.2514150253)
+        bigLine.backgroundColor = Constraints.bigLineColor
         return bigLine
     }()
     
@@ -117,10 +117,7 @@ class CartView: UIView {
     }()
     
     func setup() {
-        
-        deliveryPrice.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
-        deliveryPrice.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
-        
+        setupContentPrioritySettings()
         setupTopView()
         setupBackButton()
         setupAdressLabel()
@@ -137,6 +134,11 @@ class CartView: UIView {
         setupTotalPrice()
         setupBigLine()
         setupCartTableView()
+    }
+    
+    private func setupContentPrioritySettings() {
+        deliveryPrice.setContentCompressionResistancePriority(UILayoutPriority.defaultHigh, for: .horizontal)
+        deliveryPrice.setContentHuggingPriority(UILayoutPriority.defaultHigh, for:.horizontal)
     }
     
     private func setupTopView() {
@@ -298,5 +300,9 @@ extension CartView {
         static let deliveryPrice = "Free"
         static let totalLabel = "Total"
         static let totalPrice = "$6,000 us"
+        static let orangeColor = #colorLiteral(red: 1, green: 0.5189241767, blue: 0.3763272166, alpha: 1)
+        static let smallLineColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 0.9999999404, alpha: 0.2044064351)
+        static let bigLineColor = #colorLiteral(red: 1, green: 0.9999999404, blue: 0.9999999404, alpha: 0.2514150253)
+        static let darkBlueColor = #colorLiteral(red: 0.003921568627, green: 0, blue: 0.2078431373, alpha: 1)
     }
 }
