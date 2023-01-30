@@ -19,7 +19,7 @@
 		28B422F32954512900543AF9 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B422F22954512900543AF9 /* CartViewController.swift */; };
 		28B422F52954513B00543AF9 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B422F42954513B00543AF9 /* CartView.swift */; };
 		28B422F8295451AD00543AF9 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B422F7295451AD00543AF9 /* TabBarController.swift */; };
-		28B422FC29545CB100543AF9 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B422FB29545CB100543AF9 /* FavoriteViewController.swift */; };
+		28B422FC29545CB100543AF9 /* LikedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B422FB29545CB100543AF9 /* LikedViewController.swift */; };
 		28B422FE29545CD700543AF9 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B422FD29545CD700543AF9 /* UserViewController.swift */; };
 		ACC88E955820A080EE9F5F19 /* Pods_Shop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1699F6BDA5A9EB0E62C87216 /* Pods_Shop.framework */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,7 @@
 		28B422F22954512900543AF9 /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		28B422F42954513B00543AF9 /* CartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartView.swift; sourceTree = "<group>"; };
 		28B422F7295451AD00543AF9 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		28B422FB29545CB100543AF9 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		28B422FB29545CB100543AF9 /* LikedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedViewController.swift; sourceTree = "<group>"; };
 		28B422FD29545CD700543AF9 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		3B4DEF2C5042D781B6C5E5F8 /* Pods-Shop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shop.debug.xcconfig"; path = "Target Support Files/Pods-Shop/Pods-Shop.debug.xcconfig"; sourceTree = "<group>"; };
 		6FB8CD5F96B55BCF4EF4D23E /* Pods-Shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shop.release.xcconfig"; path = "Target Support Files/Pods-Shop/Pods-Shop.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 		28B422F929545C9000543AF9 /* Favorite */ = {
 			isa = PBXGroup;
 			children = (
-				28B422FB29545CB100543AF9 /* FavoriteViewController.swift */,
+				28B422FB29545CB100543AF9 /* LikedViewController.swift */,
 			);
 			path = Favorite;
 			sourceTree = "<group>";
@@ -279,7 +279,7 @@
 				28B422F8295451AD00543AF9 /* TabBarController.swift in Sources */,
 				28B422EE29544E5D00543AF9 /* HomeViewController.swift in Sources */,
 				2867692C29793824003A3997 /* HotSalesCollection.swift in Sources */,
-				28B422FC29545CB100543AF9 /* FavoriteViewController.swift in Sources */,
+				28B422FC29545CB100543AF9 /* LikedViewController.swift in Sources */,
 				28B422DC2954476D00543AF9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
