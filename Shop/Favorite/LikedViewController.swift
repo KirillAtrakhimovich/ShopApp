@@ -2,20 +2,25 @@ import UIKit
 
 class LikedViewController: UIViewController {
     
-    let collectionView = UICollectionView()
+    private let likedView = LikedView()
+    
+    override func loadView() {
+        view = likedView
+    }
     
     override func viewDidLoad() {
        super.viewDidLoad()
-       // Do any additional setup after loading the view.
+        likedView.backgroundColor = .orange
        
-       collectionView.collectionViewLayout = layout()
-
+        likedView.collectionView.collectionViewLayout = layout()
+        likedView.collectionView.dataSource = self
+//        likedView.collectionView.delegate = self
      }
 
      func layout() -> UICollectionViewCompositionalLayout {
        
        let layout = UICollectionViewCompositionalLayout { sectionIndex, environment -> NSCollectionLayoutSection? in
-         
+           let col = UICollectionView(frame: .zero, collectionViewLayout: layout)
          if sectionIndex == 0 {
            let itemSize = NSCollectionLayoutSize (
              widthDimension: .fractionalWidth(1.0),
