@@ -21,7 +21,7 @@ final class TabBarController: UITabBarController {
                 image: Constraints.cartImage
             ),
             generateVC(
-                viewController: FavoriteViewController(),
+                viewController: LikedViewController(),
                 title: Constraints.likedTitle,
                 image: Constraints.likedImage
             ),
